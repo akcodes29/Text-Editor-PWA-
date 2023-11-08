@@ -14,23 +14,25 @@ const initdb = async () =>
 
 // TODO: Add logic to a method that accepts some content and adds it to the database
 export const putDb = async (content) => {
-  // const db = await initdb();
-  // const tx = db.transaction('jate', 'readwrite');
-  // const store = tx.objectStore('jate');
-  // await store.put({ content });
-  // await tx.complete;
-  // console.log('Content added to database:', content);
+  const db = await initdb('jate', 1);
+  const tx = db.transaction('jate', 'readwrite');
+  const store = tx.objectStore('jate');
+  const request = store.put({ id: 1, value: content });
+  const result = await request;
+  console.log('🚀 - Content added to database:', result);
 };
 
 // TODO: Add logic for a method that gets all the content from the database
 export const getDb = async () => {
-  // const db = await openDB('jate', 1);
-  // const tx = db.transaction('jate', 'readonly');
-  // const store = tx.objectStore('jate');
-  // const allContent = store.getAll();
-  // const result = await allContent;
-  // console.log('All content retrieved from database:', result);
-  // return result;
+  console.log('GET from the database');
+
+  const db = await openDB('jate', 1);
+  const tx = db.transaction('jate', 'readonly');
+  const store = tx.objectStore('jate');
+  const allContent = store.getAll();
+  const result = await allContent;
+  console.log('result.value', result);
+  return result?.value;
 };
 
 initdb();

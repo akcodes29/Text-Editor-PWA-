@@ -20,12 +20,6 @@ butInstall.addEventListener('click', async () => {
 });
 
 
-// butInstall.addEventListener('click', (event) => {
-//     event.prompt();
-//     butInstall.setAttribute('disabled', true);
-//     butInstall.textContent = 'Installed';
-// });
-
 // TODO: Add an handler for the `appinstalled` event
   window.addEventListener('appinstalled', (event) => {
     window.deferredPrompt = null;
@@ -33,7 +27,4 @@ butInstall.addEventListener('click', async () => {
 
 
 
-// window.addEventListener('appinstalled', (event) => {
-//     textHeader.textContent = 'App Installed';
-//     console.log('appinstalled', event);
-// });
+
